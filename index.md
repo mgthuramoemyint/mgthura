@@ -61,4 +61,6 @@ First , I called a javascript that will encrypt the value to md5
 The another script tag is opening a new window and submitting the request. The form is CSRF request , the last script is I take current timestamp with `Date.now()`.  
 The timestamp includes millisecond and don't need it so removed by dividing 1000 for the decimal value I used Math.floor to remove that.
 Now encrypt it with md5 , finally we got the csrf value.
-Still the script is right but sometime it late a second when we hash the value. I asked my help friend to become a better script.
+Still the script is right but sometime it late a second when we hash the value. I asked my help friend to become a better script.  
+You have to allow pop-up to use this script. https://raw.githubusercontent.com/mgthuramoemyint/mgthura/gh-pages/final.html
+![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/2021-03-29%2020-07-56.gif?raw=true)
