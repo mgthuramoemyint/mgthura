@@ -1,6 +1,6 @@
 # Intigriti 0321 Challenge Writeup
 
-First of all , how the website work is the website has notes that take input. Our input has generated to the `<p>` tag. I have entered html tags like <script> , h1, etc..
+First of all , how the website work is the website has notes that take input. Our input has generated to the `<p>` tag. I have entered html tags like `<script> , <h1>,` etc..
 and it encoded all the html tags.  
   When I entered the notes as `https://google.com` , the response come with <a> tag. I tried to escape from the <a> tag and still it 
 didn't work.  
