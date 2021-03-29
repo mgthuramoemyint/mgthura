@@ -5,19 +5,19 @@ and it encoded all the html tags.
   When I entered the notes as `https://google.com` , the response come with <a> tag. I tried to escape from the <a> tag and still it 
 didn't work.  
   Then , I tried with `mgthura@test.com` it converted to <a> tag again.  
-  ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit.PNG)
+  ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit.PNG?raw=true)
   I tested to break out the <a> tag again with the payload `"mgthura"@test.com`.  
   The response
 come with `<a href="mailto:" mgthura"@test.com"="">"mgthura"@test.com</a>` showing that  we've successfully injected to the tag. Still we can't use to escape from the <a> tag
 just adding some event so the new payload will be `"onmouseenter=alert('flag{THIS_IS_THE_FLAG}');"@test.com`  
   By entering the new payload,
-  ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit2.PNG)
+  ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit2.PNG?raw=true)
   It was still a self xss. The challenge said it can't be self xss.
   So we need to chain csrf to get a stored xss. I checked the csrf token and anaylsing which hash it is , seem to be md5 hash.
   Look at the first photo again, see what it is written with comment tag.  
   `<!-- page generated at 2021-03-29 12:38:35 -->`  
   By changing the time to timestamp , I got the digits `1617020646` and encrypting to md5.  
-  ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/md5.PNG)  
+  ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/md5.PNG?raw=true)  
   Hence , we now how to bypass CSRF it's time to make a POC.  
     
   The csrf works liken when you open the page it will generate a token and you need to make a request with that generated token. So we've to open a new page in POC or by using iframe.
