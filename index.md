@@ -2,7 +2,7 @@
 
 First of all , how the website work is the website has notes that take input. Our input has generated to the `<p>` tag. I have entered html tags like `<script> , <h1>,` etc..
 and it encoded all the html tags.  
-  When I entered the notes as `https://google.com` , the response come with <a> tag. I tried to escape from the <a> tag and still it 
+  When I entered the notes as `https://google.com` , the response come with `<a>` tag. I tried to escape from the <a> tag and still it 
 didn't work.  
   Then , I tried with `mgthura@test.com` it converted to <a> tag again.  
   ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit.PNG?raw=true)
