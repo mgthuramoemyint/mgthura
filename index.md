@@ -6,9 +6,9 @@ and it encoded all the html tags.
 didn't work.  
   Then , I tried with `mgthura@test.com` it converted to `<a>` tag again.  
   ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit.PNG?raw=true)
-  I tested to break out the <a> tag again with the payload `"mgthura"@test.com`.  
+  I tested to break out the `<a>` tag again with the payload `"mgthura"@test.com`.  
   The response
-come with `<a href="mailto:" mgthura"@test.com"="">"mgthura"@test.com</a>` showing that  we've successfully injected to the tag. Still we can't use to escape from the <a> tag
+come with `<a href="mailto:" mgthura"@test.com"="">"mgthura"@test.com</a>` showing that  we've successfully injected to the tag. Still we can't use to escape from the `<a>` tag
 just adding some event so the new payload will be `"onmouseenter=alert('flag{THIS_IS_THE_FLAG}');"@test.com`  
   By entering the new payload,
   ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit2.PNG?raw=true)
@@ -22,6 +22,7 @@ just adding some event so the new payload will be `"onmouseenter=alert('flag{THI
     
   The csrf works liken when you open the page it will generate a token and you need to make a request with that generated token. So we've to open a new page in POC or by using iframe.
   ```<html>
+  <html>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js" integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ==" crossorigin="anonymous"></script>
 <script>
