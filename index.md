@@ -4,7 +4,7 @@ First of all , how the website work is the website has notes that take input. Ou
 and it encoded all the html tags.  
   When I entered the notes as `https://google.com` , the response come with `<a>` tag. I tried to escape from the `<a>` tag and still it 
 didn't work.  
-  Then , I tried with `mgthura@test.com` it converted to <a> tag again.  
+  Then , I tried with `mgthura@test.com` it converted to `<a>` tag again.  
   ![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/intigrit.PNG?raw=true)
   I tested to break out the <a> tag again with the payload `"mgthura"@test.com`.  
   The response
