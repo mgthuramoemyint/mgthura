@@ -64,4 +64,4 @@ The timestamp includes millisecond and don't need it so removed by dividing 1000
 Now encrypt it with md5 , finally we got the csrf value.
 Still the script is right but sometime it late a second when we hash the value. I asked  help from my friend to become a better script.  
 You have to allow pop-up to use this script. https://raw.githubusercontent.com/mgthuramoemyint/mgthura/gh-pages/final.html
-![](assets/files/final.html)
+![](https://github.com/mgthuramoemyint/mgthura/blob/gh-pages/2021-03-29%2020-07-56.gif?raw=true)
